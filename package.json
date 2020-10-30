@@ -4,7 +4,7 @@
     "author": "Rtxrulez",
     "license": "MIT",
     "scripts": {
-        "dev": "gulp",
+        "start": "gulp",
         "build": "gulp prod --production",
         "build:views": "gulp views --production",
         "build:styles": "gulp styles --production",
@@ -66,13 +66,10 @@
         "yargs": "^15.4.1"
     },
     "dependencies": {
-        "bootstrap": "^4.5.3"
+        "bootstrap": "^4.5.3",
+        "jquery": "^3.5.1"
     },
-    "husky": {
-        "hooks": {
-            "pre-commit": "lint-staged"
-        }
-    },
+    
     "lint-staged": {
         "!(_*).scss": [
             "stylelint --fix --color --config ./.stylelintrc"
