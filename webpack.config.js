@@ -38,15 +38,17 @@ module.exports = {
 
   module: {
     rules: [
+      /** Babel **/
       {
-        test: /\.js$/,
-        exclude: /node_modules/,
+        test: /\.m?js$/,
+        exclude: /(node_modules|bower_components)/,
         use: {
-          loader: require.resolve('babel-loader'),
-          query: {
-            presets: [['@babel/preset-env', { modules: false }]],
+          loader: 'babel-loader',
+          options: {
+            presets: ['@babel/preset-env'],
           },
         },
+        // npm install babel-loader @babel/core @babel/preset-env -D
       },
     ],
   },
