@@ -2,6 +2,7 @@
 
 import gulp from 'gulp';
 
+
 const requireDir = require('require-dir'),
   paths = {
     views: {
@@ -41,6 +42,9 @@ const requireDir = require('require-dir'),
       src: './src/.htaccess',
       dist: './dist/',
     },
+    deploy: {
+      src: './dist/**/*'
+    }
   };
 
 requireDir('./gulp-tasks/');
