@@ -11,7 +11,7 @@ gulp.task('favicons-img', (done) => {
     {
       masterPicture: paths.favicons.src,
       dest: paths.favicons.dist,
-      iconsPath: './img/favicons/',
+      iconsPath: paths.favicons.srcFolder,
       design: {
         ios: {
           pictureAspect: 'noChange',

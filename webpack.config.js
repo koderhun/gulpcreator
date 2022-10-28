@@ -1,5 +1,6 @@
 const path = require('path');
 const webpack = require('webpack');
+import { paths } from './gulpfile.babel'
 
 module.exports = {
   plugins: [
@@ -14,7 +15,7 @@ module.exports = {
   ],
 
   entry: {
-    app: './src/js/index.js',
+    app: paths.scripts.src,
   },
 
   output: {

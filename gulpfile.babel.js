@@ -16,17 +16,17 @@ const paths = {
     watch: ['./src/blocks/**/*.{scss,sass}', './src/styles/**/*.{scss,sass}'],
   },
   scripts: {
-    src: './src/js/index.js',
-    dist: './dist/js/',
-    watch: ['./src/blocks/**/*.js', './src/js/**/*.js'],
+    src: './src/scripts/index.js',
+    dist: './dist/scripts/',
+    watch: ['./src/blocks/**/*.js', './src/scripts/**/*.js'],
   },
   images: {
     src: [
-      './src/img/**/*.{jpg,jpeg,png,gif,tiff,svg}',
-      '!./src/img/favicon/*.{jpg,jpeg,png,gif,tiff}',
+      './src/images/**/*.{jpg,jpeg,png,gif,tiff,svg}',
+      '!./src/images/favicon/*.{jpg,jpeg,png,gif,tiff}',
     ],
-    dist: './dist/img/',
-    watch: './src/img/**/*.{jpg,jpeg,png,gif,svg,tiff}',
+    dist: './dist/images/',
+    watch: './src/images/**/*.{jpg,jpeg,png,gif,svg,tiff}',
   },
   fonts: {
     src: './src/fonts/**/*.{woff,woff2}',
@@ -34,9 +34,10 @@ const paths = {
     watch: './src/fonts/**/*.{woff,woff2}',
   },
   favicons: {
-    src: './src/img/favicon/favicon.png',
-    dist: './dist/img/favicons/',
-    data: './dist/img/favicons/data.json',
+    srcFolder: './src/images/favicon/',
+    src: './src/images/favicon/favicon.png',
+    dist: './dist/images/favicons/',
+    data: './dist/images/favicons/data.json',
   },
   gzip: {
     src: './src/.htaccess',

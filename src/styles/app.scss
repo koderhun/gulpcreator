@@ -1,8 +1,10 @@
-@import "helpers/variables";
-@import "helpers/mixins";
-@import "helpers/functions";
-@import "vendor/libs";
-@import "fonts";
-@import "../blocks/modules";
+@import 'helpers/variables';
+@import 'helpers/mixins';
+@import 'helpers/functions';
+@import 'vendor/libs';
+@import 'fonts';
 
-@import "main";
+@import 'main';
+@import 'responsive/desktop';
+@import 'responsive/tablet';
+@import 'responsive/mobile';
