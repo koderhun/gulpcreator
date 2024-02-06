@@ -25,7 +25,9 @@ gulp.task('styles', () => {
     .src(paths.styles.src)
     .pipe(gulpif(!production, sourcemaps.init()))
     .pipe(plumber())
-    .pipe(sass())
+    .pipe(sass.sync({
+      outputStyle: 'expanded'
+    }).on('error', sass.logError))
     .pipe(groupmedia())
     .pipe(
       gulpif(
