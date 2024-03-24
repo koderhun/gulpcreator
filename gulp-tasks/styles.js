@@ -6,12 +6,12 @@ import gulpif from 'gulp-if';
 import rename from 'gulp-rename';
 import mincss from 'gulp-clean-css';
 import groupmedia from 'gulp-group-css-media-queries';
-import autoprefixer from 'gulp-autoprefixer';
 import sourcemaps from 'gulp-sourcemaps';
 import plumber from 'gulp-plumber';
 import browsersync from 'browser-sync';
 import debug from 'gulp-debug';
 import yargs from 'yargs';
+import postcss from 'gulp-postcss';
 
 import dartSass from 'sass';
 import gulpSass from 'gulp-sass';
@@ -29,15 +29,7 @@ gulp.task('styles', () => {
       outputStyle: 'expanded'
     }).on('error', sass.logError))
     .pipe(groupmedia())
-    .pipe(
-      gulpif(
-        production,
-        autoprefixer({
-          cascade: false,
-          grid: true,
-        }),
-      ),
-    )
+    .pipe(postcss())
     .pipe(
       gulpif(
         production,
