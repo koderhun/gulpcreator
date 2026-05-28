@@ -1,5 +1,7 @@
-@media (max-width: map-get($grid-breakpoints, "xl")) {
-	body {
-		background-color: green;
-	}
+@use '../helpers' as helpers;
+
+@media (max-width: helpers.$breakpoint-xl) {
+  body {
+    background-color: green;
+  }
 }

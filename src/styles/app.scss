@@ -2,13 +2,11 @@
 // @tailwind components;
 // @tailwind utilities;
 
-@import 'helpers/variables';
-@import 'helpers/mixins';
-@import 'helpers/functions';
-@import 'vendor/libs';
-@import 'fonts';
+@use 'helpers' as helpers;
+@use 'vendor/libs' as libs;
+@use 'fonts' as fonts;
 
-@import 'main';
-@import 'responsive/desktop';
-@import 'responsive/tablet';
-@import 'responsive/mobile';
+@use 'main';
+@use 'responsive/desktop';
+@use 'responsive/tablet';
+@use 'responsive/mobile';

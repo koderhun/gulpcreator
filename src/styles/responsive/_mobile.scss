@@ -1,8 +1,7 @@
-@media (max-width: map-get($grid-breakpoints, "md")) {
-	
+@use '../helpers' as helpers;
+
+@media (max-width: helpers.$breakpoint-md) {
 }
 
-@media (max-width: map-get($grid-breakpoints, "sm")) {
-	
+@media (max-width: helpers.$breakpoint-sm) {
 }
-

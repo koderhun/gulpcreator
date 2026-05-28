@@ -4,7 +4,7 @@
   "author": "another",
   "license": "MIT",
   "scripts": {
-    "start": "gulp",
+    "dev": "gulp",
     "build": "gulp prod --production",
     "build:views": "gulp views --production",
     "build:styles": "gulp styles --production",
@@ -63,8 +63,8 @@
     "yargs": "^15.4.1"
   },
   "dependencies": {
-    "bootstrap": "^5.3.3",
     "jquery": "^3.7.1",
+    "pnpm": "^11.1.2",
     "swiper": "^8.4.7"
   },
   "lint-staged": {
