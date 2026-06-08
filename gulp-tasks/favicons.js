@@ -1,17 +1,17 @@
-'use strict';
+'use strict'
 
-import { paths } from '../gulpfile.babel';
-import gulp from 'gulp';
-const realFavicon = require('gulp-real-favicon');
-const fs = require('fs');
-const FAVICON_DATA_FILE = paths.favicons.data;
+import {paths} from '../gulpfile.babel'
+import gulp from 'gulp'
+import realFavicon from 'gulp-real-favicon'
+import fs from 'fs'
+const FAVICON_DATA_FILE = paths.favicons.data
 
 gulp.task('favicons-img', (done) => {
   realFavicon.generateFavicon(
     {
       masterPicture: paths.favicons.src,
       dest: paths.favicons.dist,
-      iconsPath: paths.favicons.srcFolder,
+      iconsPath: paths.favicons.forHtmlPath,
       design: {
         ios: {
           pictureAspect: 'noChange',
@@ -40,12 +40,7 @@ gulp.task('favicons-img', (done) => {
         androidChrome: {
           pictureAspect: 'noChange',
           themeColor: '#ffffff',
-          manifest: {
-            display: 'standalone',
-            orientation: 'notSet',
-            onConflict: 'override',
-            declared: true,
-          },
+          manifest: false,
           assets: {
             legacyIcon: false,
             lowResolutionIcons: false,
@@ -62,10 +57,16 @@ gulp.task('favicons-img', (done) => {
       markupFile: FAVICON_DATA_FILE,
     },
     function () {
-      done();
+      done()
     },
-  );
-});
+  )
+})
+
+gulp.task('copy-webmanifest', function () {
+  return gulp
+    .src(paths.favicons.srcFolder + 'site.webmanifest')
+    .pipe(gulp.dest(paths.favicons.dist))
+})
 
 gulp.task('inject-favicon', function () {
   return gulp
@@ -75,7 +76,10 @@ gulp.task('inject-favicon', function () {
         JSON.parse(fs.readFileSync(FAVICON_DATA_FILE)).favicon.html_code,
       ),
     )
-    .pipe(gulp.dest(paths.views.dist));
-});
+    .pipe(gulp.dest(paths.views.dist))
+})
 
-gulp.task('favicons', gulp.series('favicons-img', 'inject-favicon'))
+gulp.task(
+  'favicons',
+  gulp.series('favicons-img', 'copy-webmanifest', 'inject-favicon'),
+)
