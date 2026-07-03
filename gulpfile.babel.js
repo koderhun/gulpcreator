@@ -2,8 +2,6 @@
 
 import gulp from 'gulp'
 
-const requireDir = require('require-dir')
-
 const paths = {
   views: {
     src: ['./src/views/**/*.html', './src/views/pages/*.html'],
@@ -49,7 +47,17 @@ const paths = {
   },
 }
 
-requireDir('./gulp-tasks/')
+import './gulp-tasks/clean.js'
+import './gulp-tasks/deploy.js'
+import './gulp-tasks/favicons.js'
+import './gulp-tasks/fonts.js'
+import './gulp-tasks/gzip.js'
+import './gulp-tasks/images.js'
+import './gulp-tasks/scripts.js'
+import './gulp-tasks/serve.js'
+import './gulp-tasks/styles.js'
+import './gulp-tasks/views.js'
+import './gulp-tasks/webp.js'
 
 export {paths}
 

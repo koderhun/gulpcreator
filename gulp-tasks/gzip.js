@@ -1,8 +1,8 @@
-'use strict';
+'use strict'
 
-import { paths } from '../gulpfile.babel';
-import gulp from 'gulp';
-import debug from 'gulp-debug';
+import {paths} from '../gulpfile.babel.js'
+import gulp from 'gulp'
+import debug from 'gulp-debug'
 
 gulp.task('gzip', () => {
   return gulp
@@ -12,5 +12,5 @@ gulp.task('gzip', () => {
       debug({
         title: 'GZIP config',
       }),
-    );
-});
+    )
+})

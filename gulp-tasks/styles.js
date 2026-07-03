@@ -1,6 +1,6 @@
 'use strict'
 
-import {paths} from '../gulpfile.babel'
+import {paths} from '../gulpfile.babel.js'
 import gulp from 'gulp'
 import gulpif from 'gulp-if'
 import rename from 'gulp-rename'
@@ -9,15 +9,13 @@ import sourcemaps from 'gulp-sourcemaps'
 import plumber from 'gulp-plumber'
 import browsersync from 'browser-sync'
 import debug from 'gulp-debug'
-import yargs from 'yargs'
 import postcss from 'gulp-postcss'
 
 import dartSass from 'sass'
 import gulpSass from 'gulp-sass'
 const sass = gulpSass(dartSass)
 
-const argv = yargs.argv,
-  production = !!argv.production
+const production = process.argv.includes('--production')
 
 gulp.task('styles', () => {
   return gulp

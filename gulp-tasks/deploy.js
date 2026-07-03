@@ -1,9 +1,9 @@
-'use strict';
+'use strict'
 
-import { paths } from '../gulpfile.babel';
-import gulp from 'gulp';
-import debug from 'gulp-debug';
-import ghPages from 'gulp-gh-pages';
+import {paths} from '../gulpfile.babel.js'
+import gulp from 'gulp'
+import debug from 'gulp-debug'
+import ghPages from 'gulp-gh-pages'
 
 gulp.task('predeploy', () => {
   return gulp
@@ -13,7 +13,7 @@ gulp.task('predeploy', () => {
       debug({
         title: 'Deploy',
       }),
-    );
-});
+    )
+})
 
-gulp.task('deploy', gulp.series('predeploy'));
+gulp.task('deploy', gulp.series('predeploy'))

@@ -1,10 +1,9 @@
 'use strict'
 
-import {paths} from '../gulpfile.babel'
+import {paths} from '../gulpfile.babel.js'
 import gulp from 'gulp'
 import realFavicon from 'gulp-real-favicon'
 import fs from 'fs'
-const FAVICON_DATA_FILE = paths.favicons.data
 
 gulp.task('favicons-img', (done) => {
   realFavicon.generateFavicon(
@@ -54,7 +53,7 @@ gulp.task('favicons-img', (done) => {
         htmlCodeFile: false,
         usePathAsIs: false,
       },
-      markupFile: FAVICON_DATA_FILE,
+      markupFile: paths.favicons.data,
     },
     function () {
       done()
@@ -73,7 +72,7 @@ gulp.task('inject-favicon', function () {
     .src(paths.views.dist + '*.html')
     .pipe(
       realFavicon.injectFaviconMarkups(
-        JSON.parse(fs.readFileSync(FAVICON_DATA_FILE)).favicon.html_code,
+        JSON.parse(fs.readFileSync(paths.favicons.data)).favicon.html_code,
       ),
     )
     .pipe(gulp.dest(paths.views.dist))

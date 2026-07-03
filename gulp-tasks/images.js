@@ -1,16 +1,14 @@
-'use strict';
+'use strict'
 
-import { paths } from '../gulpfile.babel';
-import gulp from 'gulp';
-import gulpif from 'gulp-if';
-import image from 'gulp-image';
-import newer from 'gulp-newer';
-import debug from 'gulp-debug';
-import browsersync from 'browser-sync';
-import yargs from 'yargs';
+import {paths} from '../gulpfile.babel.js'
+import gulp from 'gulp'
+import gulpif from 'gulp-if'
+import image from 'gulp-image'
+import newer from 'gulp-newer'
+import debug from 'gulp-debug'
+import browsersync from 'browser-sync'
 
-const argv = yargs.argv,
-  production = !!argv.production;
+const production = process.argv.includes('--production')
 
 gulp.task('images', () => {
   return gulp
@@ -38,5 +36,5 @@ gulp.task('images', () => {
         title: 'Images',
       }),
     )
-    .on('end', browsersync.reload);
-});
+    .on('end', browsersync.reload)
+})

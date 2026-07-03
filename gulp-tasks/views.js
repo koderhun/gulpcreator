@@ -1,16 +1,14 @@
-'use strict';
+'use strict'
 
-import { paths } from '../gulpfile.babel';
-import gulp from 'gulp';
-import include from 'gulp-file-include';
-import gulpif from 'gulp-if';
-import replace from 'gulp-replace';
-import browsersync from 'browser-sync';
-import yargs from 'yargs';
-import htmlmin from 'gulp-htmlmin';
+import {paths} from '../gulpfile.babel.js'
+import gulp from 'gulp'
+import include from 'gulp-file-include'
+import gulpif from 'gulp-if'
+import replace from 'gulp-replace'
+import browsersync from 'browser-sync'
+import htmlmin from 'gulp-htmlmin'
 
-const argv = yargs.argv,
-  production = !!argv.production;
+const production = process.argv.includes('--production')
 
 gulp.task('views', () => {
   return gulp
@@ -21,9 +19,9 @@ gulp.task('views', () => {
         basepath: '@file',
       }),
     )
-    .pipe(gulpif(production, htmlmin({ collapseWhitespace: true })))
+    .pipe(gulpif(production, htmlmin({collapseWhitespace: true})))
     .pipe(gulpif(production, replace('.css', '.min.css')))
     .pipe(gulpif(production, replace('.js', '.min.js')))
     .pipe(gulp.dest(paths.views.dist))
-    .pipe(browsersync.stream());
-});
+    .pipe(browsersync.stream())
+})
