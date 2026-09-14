@@ -1,6 +1,6 @@
 'use strict'
 
-import {paths} from '../gulpfile.babel.js'
+import {paths} from '../gulpfile.mjs'
 import gulp from 'gulp'
 import include from 'gulp-file-include'
 import gulpif from 'gulp-if'

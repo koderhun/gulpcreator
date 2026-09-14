@@ -1,26 +1,42 @@
 'use strict'
 
-import {paths} from '../gulpfile.babel.js'
-import webpack from 'webpack'
-import webpackStream from 'webpack-stream'
 import gulp from 'gulp'
+import concat from 'gulp-concat'
+import babel from 'gulp-babel'
 import gulpif from 'gulp-if'
 import rename from 'gulp-rename'
-import browsersync from 'browser-sync'
+import browserSync from 'browser-sync'
 import debug from 'gulp-debug'
-import yargs from 'yargs'
 
-const webpackConfig = require('../webpack.config.js'),
-  argv = yargs.argv,
-  production = !!argv.production
+import {paths} from '../gulpfile.mjs'
 
-webpackConfig.mode = production ? 'production' : 'development'
-webpackConfig.devtool = production ? false : 'source-map'
+const production = process.argv.includes('--production')
 
 gulp.task('scripts', () => {
   return gulp
-    .src(paths.scripts.src)
-    .pipe(webpackStream(webpackConfig), webpack)
+    .src(paths.scripts.src, {
+      sourcemaps: !production,
+    })
+    .pipe(concat('main.js'))
+    .pipe(
+      babel({
+        presets: [
+          [
+            '@babel/preset-env',
+            {
+              targets: {
+                browsers: [
+                  '> 1%',
+                  'last 2 versions',
+                  'Firefox ESR',
+                  'not dead',
+                ],
+              },
+            },
+          ],
+        ],
+      }),
+    )
     .pipe(
       gulpif(
         production,
@@ -29,11 +45,11 @@ gulp.task('scripts', () => {
         }),
       ),
     )
-    .pipe(gulp.dest(paths.scripts.dist))
+    .pipe(gulp.dest(paths.scripts.dist, {sourcemaps: '.'}))
     .pipe(
       debug({
         title: 'JS files',
       }),
     )
-    .on('end', browsersync.reload)
+    .pipe(browserSync.stream())
 })

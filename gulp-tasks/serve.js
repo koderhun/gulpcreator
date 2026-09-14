@@ -1,6 +1,6 @@
 'use strict'
 
-import {paths} from '../gulpfile.babel.js'
+import {paths} from '../gulpfile.mjs'
 import gulp from 'gulp'
 import browsersync from 'browser-sync'
 

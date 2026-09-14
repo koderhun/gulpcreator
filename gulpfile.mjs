@@ -4,7 +4,7 @@ import gulp from 'gulp'
 
 const paths = {
   views: {
-    src: ['./src/views/**/*.html', './src/views/pages/*.html'],
+    src: './src/views/**/*.html',
     dist: './dist/',
     watch: ['./src/blocks/**/*.html', './src/views/**/*.html'],
   },
@@ -47,6 +47,8 @@ const paths = {
   },
 }
 
+export {paths}
+
 import './gulp-tasks/clean.js'
 import './gulp-tasks/deploy.js'
 import './gulp-tasks/favicons.js'
@@ -59,12 +61,11 @@ import './gulp-tasks/styles.js'
 import './gulp-tasks/views.js'
 import './gulp-tasks/webp.js'
 
-export {paths}
-
 export const development = gulp.series(
   'clean',
   'views',
-  gulp.parallel(['styles', 'scripts', 'images', 'webp', 'fonts', 'favicons']),
+  'favicons-img',
+  gulp.parallel(['styles', 'scripts', 'images', 'webp', 'fonts']),
   gulp.parallel('serve'),
 )
 
@@ -77,7 +78,7 @@ export const prod = gulp.series(
     'images',
     'webp',
     'fonts',
-    'favicons',
+    'favicons-img',
     'gzip',
   ]),
 )

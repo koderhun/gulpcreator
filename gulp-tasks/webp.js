@@ -1,5 +1,5 @@
 'use strict'
-import {paths} from '../gulpfile.babel.js'
+import {paths} from '../gulpfile.mjs'
 import gulp from 'gulp'
 import webp from 'gulp-webp'
 import newer from 'gulp-newer'

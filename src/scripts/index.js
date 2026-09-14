@@ -1,3 +1,3 @@
-import "./vendor";
+import './vendor.js'
 
 console.log('Hello World')

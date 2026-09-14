@@ -1,6 +1,6 @@
 'use strict'
 
-import {paths} from '../gulpfile.babel.js'
+import {paths} from '../gulpfile.mjs'
 import gulp from 'gulp'
 import debug from 'gulp-debug'
 import ghPages from 'gulp-gh-pages'
